@@ -1,22 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 from django.http import HttpResponse
 from .models import Post
-
-posts = [
-    {
-        'author': 'Петр Васильев',
-        'title': 'Первый пост',
-        'content': 'Первый пост для контента',
-        'data_posted': 'Октябрь 01, 2020'
-    },
-    {
-        'author': 'Иван Зайцев',
-        'title': 'Второй пост',
-        'content': 'Второй пост для контента',
-        'data_posted': 'Октябрь 01, 2020'
-    }
-
-]
 
 def home(request):
     context = {
@@ -24,6 +9,10 @@ def home(request):
     }
     return render(request, 'blog/home.html', context)
 
+class PostListView(ListView):
+    model = Post
+    template_name = 'blog/home.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'post'
 
 def about(request):
     return render(request, 'blog/about.html', {'title': 'О блоге'})
