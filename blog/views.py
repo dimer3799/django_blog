@@ -6,15 +6,16 @@ from .models import Post
 
 def home(request):
     context = {
-        'post': Post.objects.all()
+        'posts': Post.objects.all()
     }
     return render(request, 'blog/home.html', context)
 
 class PostListView(ListView):
     model = Post
     template_name = 'blog/home.html'  # <app>/<model>_<viewtype>.html
-    context_object_name = 'post'
+    context_object_name = 'posts'
     ordering = ['-date_posted'] # Упорядочивание постов по дате обнавления
+    paginate_by = 2
 
 class PostDetailView(DetailView):
     model = Post
