@@ -3,7 +3,7 @@
 <hr>
 <h2>Используется:</h2>
     <ul>
-    <li>Фреймворк для веб-приложений на языке Python</li>
+    <li>Django - фреймворк для веб-приложений на языке Python</li>
     <li>Html</li>
     <li>CSS</li>
     <li>Bootstrap 4</li>
